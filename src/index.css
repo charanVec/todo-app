@@ -1,34 +1,31 @@
 
 .container {
-  display: flex;              
+  display: flex;
   justify-content: space-between;
-  align-items: flex-start;      
-  max-width: 1000px;            
+  align-items: flex-start;
+  max-width: 1000px;
   margin: 40px auto;
   padding: 20px;
   font-family: Arial, sans-serif;
-  gap: 20px;                    
+  gap: 20px;
   background-color: #6c757d;
   border-radius: 20px;
+  flex-wrap: wrap;  
 }
 
-
-.left-panel {
-  flex: 1;                      
+.left-panel,
+.right-panel {
+  flex: 1 1 48%;     
   background: #ffffff;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+  min-width: 280px;  
 }
 
 .right-panel {
-  flex: 1;                      
   background: #f9f9f9;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
 }
-
 
 .title {
   text-align: center;
@@ -53,14 +50,13 @@
   cursor: pointer;
   font-size: 14px;
   margin: 4px;
-  transition: 0.3s;
+  transition: background-color 0.3s;
 }
 
 .add-btn {
   background-color: #007bff;
   color: white;
 }
-
 .add-btn:hover {
   background-color: #0056b3;
 }
@@ -69,7 +65,6 @@
   background-color: #28a745;
   color: white;
 }
-
 .save-btn:hover {
   background-color: #1e7e34;
 }
@@ -78,7 +73,6 @@
   background-color: #6c757d;
   color: white;
 }
-
 .cancel-btn:hover {
   background-color: #565e64;
 }
@@ -87,11 +81,9 @@
   background-color: #dc3545;
   color: white;
 }
-
 .delete-btn:hover {
   background-color: #a71d2a;
 }
-
 
 .task-card {
   display: flex;
@@ -123,7 +115,6 @@
   margin-top: 4px;
 }
 
-
 .high-priority {
   border-left: 6px solid red;
 }
@@ -136,7 +127,6 @@
   border-left: 6px solid green;
 }
 
-
 .popup-overlay {
   position: fixed;
   top: 0;
@@ -147,6 +137,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10px; 
+  box-sizing: border-box;
 }
 
 .popup {
@@ -154,6 +146,7 @@
   padding: 20px;
   border-radius: 10px;
   width: 350px;
+  max-width: 100%; 
   box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
 }
 
@@ -166,8 +159,67 @@
   border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 14px;
+  box-sizing: border-box;
 }
 
 .popup-actions {
   text-align: right;
+}
+
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    flex: 1 1 100%;
+    min-width: unset; 
+  }
+  .title {
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+  .category-title {
+    font-size: 18px;
+    margin: 12px 0;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  .category-title {
+    font-size: 16px;
+  }
+  .add-btn,
+  .save-btn,
+  .cancel-btn,
+  .delete-btn {
+    padding: 6px 10px;
+    font-size: 12px;
+    margin: 2px;
+  }
+  .task-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+  }
+  .task-info {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  .due-date {
+    font-size: 11px;
+  }
+  .popup {
+    width: 90%;
+    padding: 15px;
+  }
 }
